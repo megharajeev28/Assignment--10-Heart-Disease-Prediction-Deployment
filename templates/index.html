@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>❤️ Heart Disease Prediction</h1>
+
+    <p class="subtitle">
+        Enter the patient's clinical details below to predict the risk of heart disease.
+    </p>
+
+    <form action="/predict_form" method="POST">
+
+        <div class="grid">
+
+            <!-- Age -->
+            <div class="input-box">
+                <label>Age</label>
+                <input type="number" name="age" placeholder="Enter Age" required>
+            </div>
+
+            <!-- Gender -->
+            <div class="input-box">
+                <label>Gender</label>
+                <select name="sex" required>
+                    <option value="">Select Gender</option>
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+            </div>
+
+            <!-- Chest Pain -->
+            <div class="input-box">
+                <label>Chest Pain Type</label>
+                <select name="cp" required>
+                    <option value="">Select Chest Pain Type</option>
+                    <option value="0">Typical Angina</option>
+                    <option value="1">Atypical Angina</option>
+                    <option value="2">Non-Anginal Pain</option>
+                    <option value="3">Asymptomatic</option>
+                </select>
+            </div>
+
+            <!-- Resting BP -->
+            <div class="input-box">
+                <label>Resting Blood Pressure (mm Hg)</label>
+                <input type="number" name="trestbps" placeholder="e.g. 120" required>
+            </div>
+
+            <!-- Cholesterol -->
+            <div class="input-box">
+                <label>Serum Cholesterol (mg/dl)</label>
+                <input type="number" name="chol" placeholder="e.g. 240" required>
+            </div>
+
+            <!-- FBS -->
+            <div class="input-box">
+                <label>Fasting Blood Sugar</label>
+                <select name="fbs" required>
+                    <option value="">Select</option>
+                    <option value="1">Greater than 120 mg/dl</option>
+                    <option value="0">120 mg/dl or Less</option>
+                </select>
+            </div>
+
+            <!-- ECG -->
+            <div class="input-box">
+                <label>Resting ECG</label>
+                <select name="restecg" required>
+                    <option value="">Select ECG Result</option>
+                    <option value="0">Normal</option>
+                    <option value="1">ST-T Wave Abnormality</option>
+                    <option value="2">Left Ventricular Hypertrophy</option>
+                </select>
+            </div>
+
+            <!-- Max Heart Rate -->
+            <div class="input-box">
+                <label>Maximum Heart Rate Achieved</label>
+                <input type="number" name="thalach" placeholder="e.g. 150" required>
+            </div>
+
+            <!-- Exercise Angina -->
+            <div class="input-box">
+                <label>Exercise Induced Angina</label>
+                <select name="exang" required>
+                    <option value="">Select</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <!-- Oldpeak -->
+            <div class="input-box">
+                <label>Old Peak (ST Depression)</label>
+                <input type="number" step="0.1" name="oldpeak" placeholder="e.g. 2.3" required>
+            </div>
+
+            <!-- Slope -->
+            <div class="input-box">
+                <label>Slope of Peak Exercise ST Segment</label>
+                <select name="slope" required>
+                    <option value="">Select</option>
+                    <option value="0">Upsloping</option>
+                    <option value="1">Flat</option>
+                    <option value="2">Downsloping</option>
+                </select>
+            </div>
+
+            <!-- CA -->
+            <div class="input-box">
+                <label>Major Vessels Colored (CA)</label>
+                <select name="ca" required>
+                    <option value="">Select</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <!-- Thal -->
+            <div class="input-box">
+                <label>Thalassemia</label>
+                <select name="thal" required>
+                    <option value="">Select</option>
+                    <option value="1">Normal</option>
+                    <option value="2">Fixed Defect</option>
+                    <option value="3">Reversible Defect</option>
+                </select>
+            </div>
+
+        </div>
+
+        <button type="submit">
+            🔍 Predict Heart Disease
+        </button>
+
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <h2>{{ prediction }}</h2>
+    </div>
+    {% endif %}
+
+    <footer>
+        Developed by <strong>Megha Rajeev</strong>
+    </footer>
+
+</div>
+
+</body>
+
+</html>
